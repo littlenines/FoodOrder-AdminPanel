@@ -6,7 +6,7 @@ install dependencies <br>
 <br>
 Import Schema,tables and procedures into your MySQL Workbench from: <br><br>
 
-> MySQL_Tables folder
+> MySQL_Files folder
 <br>
 Go to .env file and input your database info and secret key for session/cookies (random, can be anything) <br>
 
