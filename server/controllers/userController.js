@@ -1,14 +1,5 @@
-const mysql = require('mysql');
+const pool = require('../config/database');
 const bcrypt = require('bcryptjs');
-
-// Connection pool
-const pool = mysql.createPool({
-    multipleStatements: true,
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
-})
 
 
 exports.users = (req, res) => {
@@ -35,7 +26,7 @@ exports.register = (req, res) => {
                 else if (password !== cpassword) {
                     res.render('users', { alert: ` Password doesn't match.` });
                 } else {
-                    let hashedPassword = await bcrypt.hash(password, 8);
+                    const hashedPassword = await bcrypt.hash(password, 10);
                     // Use the connection
                     connection.query('call registerInsert(?,?)', [username, hashedPassword], (err, rows) => {
 
@@ -138,7 +129,7 @@ exports.adminRegister = (req, res) => {
                 else if (password !== cpassword) {
                     res.render('register', { alert: ` Password doesn't match.` });
                 } else {
-                    let hashedPassword = await bcrypt.hash(password, 8);
+                    const hashedPassword = await bcrypt.hash(password, 10);
                     // Use the connection
                     connection.query('call addAdmin(?,?)', [username, hashedPassword], (err, rows) => {
 
@@ -216,7 +207,7 @@ exports.delete = (req, res) => {
         connection.query('call deleteOrder(?)', [req.params.id], (err, rows) => {
 
             if (!err) {
-                let removedUser = encodeURIComponent('User successfully removed');
+                const removedUser = encodeURIComponent('User successfully removed');
                 res.redirect('/hero?removed=' + removedUser);
             } else {
                 console.log('Error: ' + err);
@@ -254,7 +245,7 @@ exports.deleteProduct = (req, res) => {
         connection.query('call deleteMenu(?);', [req.params.id], (err, rows) => {
 
             if (!err) {
-                let removedUser = encodeURIComponent('Product successfully removed');
+                const removedUser = encodeURIComponent('Product successfully removed');
                 res.redirect('/product?removed=' + removedUser);
             } else {
                 console.log('Error: ' + err);

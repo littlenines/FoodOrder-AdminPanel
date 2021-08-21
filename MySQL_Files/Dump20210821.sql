@@ -18,6 +18,91 @@ USE `storedb`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `admin` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admin`
+--
+
+LOCK TABLES `admin` WRITE;
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `menu`
+--
+
+DROP TABLE IF EXISTS `menu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `menu` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(45) DEFAULT NULL,
+  `price` int unsigned DEFAULT NULL,
+  `img` varchar(50) DEFAULT NULL,
+  `info` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `menu`
+--
+
+LOCK TABLES `menu` WRITE;
+/*!40000 ALTER TABLE `menu` DISABLE KEYS */;
+INSERT INTO `menu` VALUES (1,'Nduja',7,'/images/nduja.jpg','Cheese, nduja, mozzarella, tomato, red onion, black olives'),(2,'Bianka',7,'/images/bianka.jpg','Carbonara sauce, spinach cream, zucchini, gorgonzola, crispy pancetta, fine herbs'),(3,'White & Hot',9,'/images/whitehot.jpg','Spicy tomato, ham, kulen, pancetta, pork ribs, caramelized onions, cheddar'),(4,'Porcheta',8,'/images/porcheta.jpg','Spicy pork slices, tomatoes, red onion, parsley and oriental dressing'),(5,'Black & Hot',10,'/images/blackhot.jpg','Cheese, ham, pepperoni, pancetta, pork ribs, red onion, cheddar chesse, hot sauce'),(6,'Breosaola',7,'/images/breosaola.jpg','Cheese, cheddar, smoked cheese, bresaola, caramelised onion, baby lettuce, lemon cream and flaked almonds'),(7,'Siena',6,'/images/siena.jpg','Cheese, ham, artichokes, red onion, tomatoes, capers, pine nuts and basil pesto'),(8,'Inverno',5,'/images/inverno.jpg','Cheese, ham, pepperoni, bbq sauce, green bell peppers, olives, champignons, red onion, cheddar');
+/*!40000 ALTER TABLE `menu` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `order`
+--
+
+DROP TABLE IF EXISTS `order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `order` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(45) NOT NULL,
+  `last_name` varchar(45) NOT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `phone` varchar(45) NOT NULL,
+  `address` varchar(45) NOT NULL,
+  `title` varchar(45) DEFAULT NULL,
+  `price` int unsigned DEFAULT NULL,
+  `quantity` int unsigned NOT NULL,
+  `total` int DEFAULT NULL,
+  `dateOrdered` text,
+  `extras` text,
+  `comments` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order`
+--
+
+LOCK TABLES `order` WRITE;
+/*!40000 ALTER TABLE `order` DISABLE KEYS */;
+/*!40000 ALTER TABLE `order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping routines for database 'storedb'
 --
 /*!50003 DROP PROCEDURE IF EXISTS `addAdmin` */;
@@ -334,4 +419,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-08-10 14:37:17
+-- Dump completed on 2021-08-21 22:28:44

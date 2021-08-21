@@ -1,52 +1,10 @@
-const mysql = require('mysql');
+const pool = require('../config/database');
+const { DateTime } = require("luxon");
 
-// Get date and time
-const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-];
-const weekdays = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-];
-
-let futureDate = new Date();
-
-const year = futureDate.getFullYear();
-const hours = futureDate.getHours();
-const minutes = futureDate.getMinutes();
-
-let month = futureDate.getMonth();
-month = months[month];
-
-const date = futureDate.getDate();
-const weekday = weekdays[futureDate.getDay()];
-
-
-// Connection pool
-const pool = mysql.createPool({
-    multipleStatements: true,
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
-})
-
+// Date and Time
+const now = DateTime.now();
+const change = {...DateTime.DATETIME_MED,weekday: 'long'};
+const dt = now.toLocaleString(change);
 
 // View pizza menu
 exports.main = (req, res) => {
@@ -118,15 +76,10 @@ exports.order = (req, res) => {
 
     const { first_name, last_name, email, phone, address, title, price, quantity, comments } = req.body;
     const total = price * quantity;
-    const dateOrdered = `${weekday}, ${date} ${month} ${year} ${hours}:${minutes}`;
+    const dateOrdered = `${dt}`;
 
     // Checkbox
-    let extra = req.body.extra;
-    if (extra === undefined) {
-        extra = null;
-    } else {
-        extra = extra.toString();
-    }
+    const extra = req.body.extra ? req.body.extra.toString() : null;
 
     // Connect to DB
     pool.getConnection((err, connection) => {
