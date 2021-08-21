@@ -1,6 +1,6 @@
 # FoodOrder-AdminPanel
 Food ordering project with admin panel , used NodeJS , Express , Handlebars , Session, Cookies , Password hash, Luxon, File upload,Bootstrap, MySQL Stored Procedures <br><br>
-![](https://github.com/littlenines/FoodOrder-AdminPanel/blob/2eca9cb20161e04a0c1f7acc3ee1b0ada65c0d97/How%20it%20looks/home.gif)
+![]()
 For a better idea/picture of the project go to [How it looks](https://github.com/littlenines/FoodOrder-AdminPanel/tree/master/How%20it%20looks) folder <br><br>
 install dependencies <br>
 > npm install
