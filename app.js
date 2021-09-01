@@ -27,7 +27,7 @@ app.use(cookieParser());
 // File upload
 app.use(fileUpload());
 // Session needs to be before routes or it won't work
-const twoDay = 2 * 24 * 60 * 60 * 1000;;
+const twoDay = 2 * 24 * 60 * 60 * 1000;
 app.use(session({
     secret: process.env.SI_SECRET,
     saveUninitialized: true,
