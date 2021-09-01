@@ -1,5 +1,9 @@
 # FoodOrder-AdminPanel
-Food ordering project with admin panel , used NodeJS , Express , Handlebars , Session, Cookies , Password hash, File upload,Bootstrap, MySQL Stored Procedures <br><br>
+Food ordering project with admin panel , used NodeJS , Express , Handlebars , Session, Cookies , Password hash, Luxon, File upload,Bootstrap, MySQL Stored Procedures <br><br>
+![](https://github.com/littlenines/FoodOrder-AdminPanel/blob/3c7878a5069b06ef5ced56ac7763043fc4554432/How%20it%20looks/home.gif) <br><br>
+In order to access admin panel we have to add `/admin` in the URL <br>
+We can't access other functionalitis from admin panel if we are not logged in , the user can register once from the main admin page (that option is added for the purpose of this project in case we don't have our user already in the database) <br> <br>
+![](https://github.com/littlenines/FoodOrder-AdminPanel/blob/cfca3debec94dc8c201b08fac2b721fa1899cb4c/How%20it%20looks/admin.gif)<br> <br>
 For a better idea/picture of the project go to [How it looks](https://github.com/littlenines/FoodOrder-AdminPanel/tree/master/How%20it%20looks) folder <br><br>
 install dependencies <br>
 > npm install
